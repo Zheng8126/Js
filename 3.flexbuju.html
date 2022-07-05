@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex 布局</title>
+    <style>
+      body {
+        margin: 2px;
+        height: 98vh;
+        background-color: #eee;
+      }
+      /* 通用选择器 */
+      * {
+        /* border:1px solid black ; */
+        border-radius: 5px;
+      }
+      .flex {
+        display: flex;
+      }
+      .baiSe {
+        background-color: white;
+      }
+      .flex1 {
+        flex: 1;
+      }
+      .flex3 {
+        flex: 3;
+      }
+      .column {
+        flex-direction: column;
+      }
+      .mg8 {
+        margin: 8px 8px 0 8px;
+      }
+      .mgr8 {
+        margin-right: 8px;
+      }
+      .mgl8 {
+        margin-left: 8px;
+      }
+      .mgt8 {
+        margin-top: 8px;
+      }
+      .shadow {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      }
+      .daoHang{
+        padding: 10px 20px;
+        border-bottom: 1px solid #999;
+        font-size: 16px;
+        color: #666;
+      }
+      /* 当屏幕小于600px时要改变的css */
+      @media(max-width:600px){
+        .ceBian{
+            display: none;
+        }
+        .neiRong{
+            flex-direction: column;
+        }
+        .shujuQu{
+            flex-direction: column;
+        }
+        .youQuDuiQi{
+            margin-left: 8px;
+        }
+        .shuJuBianJu{
+            margin: 0 0 8px;
+            flex: auto;
+        }
+      }
+      /* 
+      与上面手机适配的css类叠加，因为在内容区设置了了overflow：auto
+      是内容区加了css类.neiRong，所以-webkit-scrollbar{display：none；}
+      才会生效
+      */
+      .neiRong::-webkit-scrollbar{
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="flex">
+    <!-- 侧边栏 -->
+    <div style="width: 200px; z-index: 2;" class="ceBian baiSe shadow mgt8 column">
+      <!-- 头像栏 -->
+      <div
+        class="flex shadow"
+        style="
+          justify-content: space-evenly;
+          margin: 5px;
+          padding: 10px;
+          align-items: center;
+        "
+      >
+        <img
+          src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fblog%2F202108%2F21%2F20210821060555_67898.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1659549922&t=c20d1874f97023b894a152e6b3d26be9"
+          alt="我好丑"
+          width="80px"
+          height="80px"
+        />
+        <div style="white-space: nowrap; font-size: 15px; margin-right: 10px">
+          郑天天
+        </div>
+      </div>
+
+      <!-- 导航栏 -->
+      <div class="flex1">
+        <div class="daoHang">导航</div>
+        <div class="daoHang">导航</div>
+        <div class="daoHang">导航</div>
+        <div class="daoHang">导航</div>
+        <div class="daoHang">导航</div>
+      </div>
+    </div>
+    <!-- 主区域 -->
+    <div class="flex1 flex column">
+      <!-- 头部栏 -->
+      <div
+        style=" z-index: 1;min-height: 60px;"
+        class="baiSe mgl8 mgt8 mgr8 shadow"
+      ></div>
+      <!-- 内容区域 -->
+      <div class="flex flex1 neiRong " style="overflow:auto;" >
+        <!-- overflow滚动 -->
+        <!-- 左区 -->
+        <div class="flex3 flex column mg8">
+          <!-- 数据区 -->
+          <div class="flex shujuQu">
+            <!-- 数据块 -->
+            <div class="flex1 mgr8 baiSe shadow shuJuBianJu" style="height: 140px"></div>
+            <div class="flex1 mgr8 baiSe shadow shuJuBianJu" style="height: 140px"></div>
+            <div class="flex1 mgr8 baiSe shadow shuJuBianJu" style="height: 140px"></div>
+            <div class="flex1 baiSe shadow shuJuBianJu" style="height: 140px"></div>
+          </div>
+          <!-- 列表区 -->
+          <div class="flex flex1 column">
+            <!-- 列表项 -->
+            <div style="height: 180px" class="baiSe mgt8 shadow"></div>
+            <div style="height: 180px" class="baiSe mgt8 shadow"></div>
+            <div style="height: 180px" class="baiSe mgt8 shadow"></div>
+            <div style="height: 180px" class="baiSe mgt8 shadow"></div>
+            <div style="height: 180px" class="baiSe mgt8 shadow"></div>
+          </div>
+        </div>
+        <!-- 右区 -->
+        <div class="flex1 flex column mgr8 mgt8 youQuDuiQi">
+          <!-- 提示区 -->
+          <div style="height: 150px" class="baiSe shadow"></div>
+          <!-- 消息区 -->
+          <div style="height: 300px" class="baiSe shadow mgt8"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
